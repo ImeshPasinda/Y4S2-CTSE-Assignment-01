@@ -7,7 +7,7 @@ services:
     ports:
       - "5000:5000"
     environment:
-      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/learnopia
     depends_on:
       - mongo
 
@@ -17,7 +17,7 @@ services:
     ports:
       - "8070:8070"
     environment:
-      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/learnopia
     depends_on:
       - mongo
 
@@ -27,7 +27,7 @@ services:
     ports:
       - "8090:8090"
     environment:
-      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/learnopia
     depends_on:
       - mongo
 
@@ -37,7 +37,7 @@ services:
     ports:
       - "8030:8030"
     environment:
-      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/learnopia
     depends_on:
       - mongo
 
@@ -47,7 +47,7 @@ services:
     ports:
       - "8050:8050"
     environment:
-      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/learnopia
     depends_on:
       - mongo       
 
