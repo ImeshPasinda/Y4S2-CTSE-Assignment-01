@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coursecontent-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: coursecontent
+  template:
+    metadata:
+      labels:
+        app: coursecontent
+    spec:
+      containers:
+        - name: coursecontent
+          image: darshib/learnopia:learnopia-service3
+          ports:
+            - containerPort: 8090

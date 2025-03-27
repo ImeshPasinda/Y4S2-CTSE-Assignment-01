@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: authenticate-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: authenticate
+  template:
+    metadata:
+      labels:
+        app: authenticate
+    spec:
+      containers:
+        - name: authenticate
+          image: darshib/learnopia:learnopia-service1
+          ports:
+            - containerPort: 5000

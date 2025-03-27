@@ -1,0 +1,74 @@
+version: '3.8'
+
+services:
+  service1:
+    build:
+      context: ./services/authenticate
+    ports:
+      - "5000:5000"
+    environment:
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+    depends_on:
+      - mongo
+
+  service2:
+    build:
+      context: ./services/course
+    ports:
+      - "8070:8070"
+    environment:
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+    depends_on:
+      - mongo
+
+  service3:
+    build:
+      context: ./services/courseContent
+    ports:
+      - "8090:8090"
+    environment:
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+    depends_on:
+      - mongo
+
+  service4:
+    build:
+      context: ./services/enrollment
+    ports:
+      - "8030:8030"
+    environment:
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+    depends_on:
+      - mongo
+
+  service5:
+    build:
+      context: ./services/payment
+    ports:
+      - "8050:8050"
+    environment:
+      - mongodb+srv://Imesh:Imesh1234@cluster0.ygreoof.mongodb.net/ctse_a1_db
+    depends_on:
+      - mongo       
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - service1
+      - service2
+      - service3
+      - service4
+      - service5
+  
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Purchase Confirmation - Learnopia</title>
+</head>
+
+<body>
+  <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+    <div style="text-align: center;">
+      <img src="https://static.wixstatic.com/media/618c8c_6b94cba6dcff4f6bb02dde09bba7a3b5~mv2.png" alt="Logo"
+        style="max-width: 100px; height: auto; margin-bottom: 5px; margin: 0 auto;">
+    </div>
+    <p>Hello {{recipient}},</p>
+    <p>Thank you for purchasing the course <strong>"{{courseName}}"</strong> on Learnopia!</p>
+    <p>You've taken a significant step toward enhancing your skills and knowledge.</p>
+    <p>This course is designed to provide you with comprehensive learning materials, practical exercises, and expert
+      guidance to help you succeed.</p>
+    <p>Your order ID is: <strong>{{transactionId}}</strong></p>
+    <p>The price of the course is: <strong>LKR {{coursePrice}}</strong></p>
+    <p>You can access the course content through the following link: <a href="{{courseLink}}">Access Course</a></p>
+    <p>We're excited to accompany you on this learning journey!</p>
+    <p>If you have any questions or need assistance along the way, feel free to reach out to us at
+      <strong>learnopiainfo@gmail.com</strong>.
+    </p>
+    <p>Happy learning!</p>
+
+    <!-- Footer -->
+    <hr style="border: none; border-top: 1px solid #ccc; margin: 20px 0; clear: both;">
+    <div style="text-align: center; margin-top: 20px; font-size: 12px; color: #888;">
+      <p>This email was sent to you by <strong>Learnopia</strong></p>
+      <p>If you have any questions, please contact us at <strong>learnopiainfo@gmail.com</strong></p>
+      <p>© 2024 Learnopia, Inc. All rights reserved.</p>
+    </div>
+    <!-- End of Footer -->
+  </div>
+</body>
+
+</html>
