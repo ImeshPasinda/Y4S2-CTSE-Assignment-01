@@ -1,0 +1,46 @@
+name: cicd-workflow to create docker image and upload into AWS ECR
+on:
+  push:
+    branches: [ "development" ]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install dependencies
+      working-directory: services/authentication
+      run: npm install
+
+    - name: Run tests
+      working-directory: services/authenticate
+      run: npm test
+
+    - name: Build the project
+      working-directory: services/authenticate
+      run: npm run build
+
+    - name: Setup AWS ECR Details
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+
+    - name: Login to Amazon ECR
+      id: login-pf-aws-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Build and push Docker image
+      env:
+        ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
+        ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
+        IMAGE_TAG: ${{ github.sha }}
+      run: |
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG services/authentication
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
