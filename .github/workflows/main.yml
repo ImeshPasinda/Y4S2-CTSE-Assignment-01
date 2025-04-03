@@ -17,10 +17,6 @@ jobs:
       working-directory: services/authenticate
       run: npm install
 
-    - name: Build the project
-      working-directory: services/authenticate
-      run: npm run build
-
     - name: Setup AWS ECR Details
       uses: aws-actions/configure-aws-credentials@v1
       with:
