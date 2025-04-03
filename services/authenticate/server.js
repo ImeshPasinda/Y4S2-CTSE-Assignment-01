@@ -14,7 +14,6 @@ app.use(cors({
   credentials: true,
 }));
 
-
 // MongoDB connection
 mongoose.connect(process.env.MONGO, {
   useNewUrlParser: true,
@@ -28,6 +27,11 @@ db.on('error', (error) => {
 
 db.once('open', () => {
   console.log('MongoDB connection successful!');
+});
+
+// Health check route
+app.get("/", (req, res) => {
+  res.send("Server is working!");
 });
 
 // Routes
