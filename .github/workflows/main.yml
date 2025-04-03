@@ -1,4 +1,4 @@
-name: cicd-workflow to create docker image and upload into AWS ECR
+name: cicd-workflow to create docker image and upload into AWS ECR 
 on:
   push:
     branches: [ "development" ]
