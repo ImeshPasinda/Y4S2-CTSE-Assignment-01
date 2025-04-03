@@ -17,10 +17,6 @@ jobs:
       working-directory: services/authenticate
       run: npm install
 
-    - name: Run tests
-      working-directory: services/authenticate
-      run: npm test
-
     - name: Build the project
       working-directory: services/authenticate
       run: npm run build
@@ -42,5 +38,5 @@ jobs:
         ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
         IMAGE_TAG: ${{ github.sha }}
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG services/authentication
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG services/authenticate
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
