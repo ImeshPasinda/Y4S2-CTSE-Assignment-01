@@ -14,7 +14,7 @@ jobs:
         node-version: '18'
 
     - name: Install dependencies
-      working-directory: services/authentication
+      working-directory: services/authenticate
       run: npm install
 
     - name: Run tests
