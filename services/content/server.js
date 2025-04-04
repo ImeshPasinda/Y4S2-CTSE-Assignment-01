@@ -34,7 +34,7 @@ db.once('open', () => {
 
 // Health check route
 app.get("/health", (req, res) => {
-  res.send("Content service is working!");
+  res.send("Content service is workingggg!");
 });
 
 // Routes
