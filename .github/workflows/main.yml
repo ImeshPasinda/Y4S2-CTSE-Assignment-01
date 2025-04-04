@@ -61,22 +61,26 @@ jobs:
         ECS_SERVICE: authenticate-service # change to your ECS service name
         TASK_DEFINITION_FAMILY: authenticate-task # change to your task definition family
       run: |
-        # Define the container definitions with the new image tags
-        CONTAINER_DEFINITIONS=$(jq -n \
-          --arg image "$ECR_REGISTRY/$ECR_REPO_PREFIX/authenticate:$IMAGE_TAG" \
-          '[
-            {
-              "name": "authenticate-container",
-              "image": $image,
-              "essential": true,
-              "portMappings": [
-                {
-                  "containerPort": 5000,
-                  "hostPort": 0
-                }
-              ]
-            }
-          ]')
+        # Define the container definitions with the new image tags and memory settings
+          CONTAINER_DEFINITIONS=$(jq -n \
+            --arg image "$ECR_REGISTRY/$ECR_REPO_PREFIX/authenticate:$IMAGE_TAG" \
+            --arg memory "512" \  # Specify the memory limit in MB
+            --arg memoryReservation "256" \  # Specify the memory reservation in MB (optional)
+            '[
+              {
+                "name": "authenticate-container",
+                "image": $image,
+                "essential": true,
+                "portMappings": [
+                  {
+                    "containerPort": 5000,
+                    "hostPort": 0
+                  }
+                ],
+                "memory": $memory,  # Adding memory to the container definition
+                "memoryReservation": $memoryReservation  # Optional: specify reserved memory for the container
+              }
+            ]')
 
         # Register the new task definition revision
         TASK_DEFINITION=$(aws ecs register-task-definition \
