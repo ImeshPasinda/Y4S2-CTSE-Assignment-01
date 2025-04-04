@@ -29,9 +29,9 @@ db.once('open', () => {
   console.log('MongoDB connection successful!');
 });
 
-// Health check routes
+// Health check route
 app.get("/", (req, res) => {
-  res.send("Authentication service is working!");
+  res.send("Authentication service is workingg!");
 });
 
 // Routes
