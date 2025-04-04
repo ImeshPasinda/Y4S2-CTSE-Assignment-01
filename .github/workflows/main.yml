@@ -43,11 +43,19 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         IMAGE_TAG: ${{ github.sha }}
+        LATEST_TAG: latest
         ECR_REPO_PREFIX: learnopia
       run: |
         for service in authenticate course content enrollment payment; do
           IMAGE_NAME="$ECR_REGISTRY/$ECR_REPO_PREFIX/$service:$IMAGE_TAG"
-          echo "Building and pushing $IMAGE_NAME"
-          docker build -t $IMAGE_NAME services/$service
+          LATEST_IMAGE_NAME="$ECR_REGISTRY/$ECR_REPO_PREFIX/$service:$LATEST_TAG"
+          
+          echo "Building and pushing $IMAGE_NAME and $LATEST_IMAGE_NAME"
+          
+          # Build the image with both tags
+          docker build -t $IMAGE_NAME -t $LATEST_IMAGE_NAME services/$service
+          
+          # Push both the commit hash tag and the latest tag
           docker push $IMAGE_NAME
+          docker push $LATEST_IMAGE_NAME
         done
