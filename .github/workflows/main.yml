@@ -1,23 +1,23 @@
-name: cicd-workflow to create docker image and upload into AWS ECR 
+name: cicd-workflow to create docker image and upload into AWS ECR
+
 on:
   push:
     branches: [ "development" ]
+
 jobs:
-  job1:
+  build-and-push:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout source
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: '18'
 
-    - name: Install dependencies
-      working-directory: services/authenticate
-      run: npm install
-
-    - name: Setup AWS ECR Details
+    - name: Setup AWS ECR Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -25,14 +25,29 @@ jobs:
         aws-region: ${{ secrets.AWS_REGION }}
 
     - name: Login to Amazon ECR
-      id: login-pf-aws-ecr
+      id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Build and push Docker image
-      env:
-        ECR_REGISTRY: ${{ steps.login-pf-aws-ecr.outputs.registry }}
-        ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
-        IMAGE_TAG: ${{ github.sha }}
+    - name: Install dependencies for all services (optional)
       run: |
-        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG services/authenticate
-        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        for service in authenticate course courseContent enrollment payment; do
+          if [ -f services/$service/package.json ]; then
+            echo "Installing dependencies for $service..."
+            cd services/$service
+            npm install
+            cd -
+          fi
+        done
+
+    - name: Build and Push Docker images to ECR
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        IMAGE_TAG: ${{ github.sha }}
+        ECR_REPO_PREFIX: learnopia
+      run: |
+        for service in authenticate course courseContent enrollment payment; do
+          IMAGE_NAME="$ECR_REGISTRY/$ECR_REPO_PREFIX/$service:$IMAGE_TAG"
+          echo "Building and pushing $IMAGE_NAME"
+          docker build -t $IMAGE_NAME services/$service
+          docker push $IMAGE_NAME
+        done
