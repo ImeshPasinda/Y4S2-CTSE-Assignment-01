@@ -33,6 +33,11 @@ db.once('open', () => {
   console.log('MongoDB connection successful!');
 });
 
+// Health check route
+app.get("/", (req, res) => {
+  res.send("Payment service is working!");
+});
+
 //Routes
 const paymentRoutes = require('./routes/paymentRoutes');
 app.use('/api/payment', paymentRoutes);

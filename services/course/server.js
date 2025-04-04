@@ -32,8 +32,12 @@ db.once('open', () => {
   console.log('MongoDB connection successful!');
 });
 
-// Routes
+// Health check route
+app.get("/", (req, res) => {
+  res.send("Course service is working!");
+});
 
+// Routes
 const courseRoutes=require('./routes/courseRoutes');
 app.use('/api/course',courseRoutes);
 

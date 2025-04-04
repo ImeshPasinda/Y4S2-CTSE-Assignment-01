@@ -32,8 +32,12 @@ db.once('open', () => {
   console.log('MongoDB connection successful!');
 });
 
-// Routes
+// Health check route
+app.get("/", (req, res) => {
+  res.send("Enrollment service is working!");
+});
 
+// Routes
 const enrollmentRoutes = require('./routes/enrollmentRoutes');
 app.use('/api/enrollment', enrollmentRoutes);
 

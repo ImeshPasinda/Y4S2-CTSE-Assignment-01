@@ -33,8 +33,8 @@ db.once('open', () => {
 });
 
 // Health check route
-app.get("/health", (req, res) => {
-  res.send("Content service is workingggg!");
+app.get("/", (req, res) => {
+  res.send("Content service is working!");
 });
 
 // Routes
