@@ -31,7 +31,7 @@ db.once('open', () => {
 
 // Health check route
 app.get("/", (req, res) => {
-  res.send("Authentication service is workingg!");
+  res.send("Authentication service is workinggg!");
 });
 
 // Routes
