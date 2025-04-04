@@ -30,7 +30,7 @@ jobs:
 
     - name: Install dependencies for all services (optional)
       run: |
-        for service in authenticate course courseContent enrollment payment; do
+        for service in authenticate course content enrollment payment; do
           if [ -f services/$service/package.json ]; then
             echo "Installing dependencies for $service..."
             cd services/$service
@@ -45,7 +45,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
         ECR_REPO_PREFIX: learnopia
       run: |
-        for service in authenticate course courseContent enrollment payment; do
+        for service in authenticate course content enrollment payment; do
           IMAGE_NAME="$ECR_REGISTRY/$ECR_REPO_PREFIX/$service:$IMAGE_TAG"
           echo "Building and pushing $IMAGE_NAME"
           docker build -t $IMAGE_NAME services/$service
