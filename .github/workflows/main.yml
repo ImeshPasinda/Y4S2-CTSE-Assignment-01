@@ -61,5 +61,5 @@ jobs:
       run: |
         for service in authenticate course content enrollment payment; do
           echo "Updating ECS service for $service..."
-          aws ecs update-service --cluster $CLUSTER_NAME --service ${service}-task-service --force-new-deployment
+          aws ecs update-service --cluster $CLUSTER_NAME --service ${service}-service --force-new-deployment
         done
