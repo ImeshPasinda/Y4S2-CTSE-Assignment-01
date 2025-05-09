@@ -1,0 +1,28 @@
+Learnopia - Accounts 
+
+Email : student@learnopia.com  (Student)
+Password: 1234
+
+Email : admin@learnopia.com  (Admin)
+Password: 1234
+
+Email : instructor@learnopia.com  (Instructor)
+Password: 1234
+
+
+Google Account Information:
+
+Email: learnopiainfo@gmail.com
+Password: Welcome@321#
+
+
+Stripe Sandbox Account Information:
+
+Link: https://dashboard.stripe.com/
+
+Email: learnopiainfo@gmail.com
+Password: Welcome@321#
+
+Card Number: 4242 4242 4242 4242
+Expiration Date: 04/30
+CVV: 345
