@@ -1,0 +1,299 @@
+body {
+  font-family: Source Sans Pro, sans-serif !important;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0 0 0 / 10%); /* Semi-transparent white */
+  z-index: 9999; /* Ensure the overlay is on top of other elements */
+}
+
+/* Nav Bar */
+.nav-link {
+  color: #0056d2 !important;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgb(0, 86, 210)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.custom-bg-color {
+  background-color: #ffffff;
+}
+
+.btn {
+  background-color: #0056d2 !important;
+  color: white !important;
+
+}
+
+.dropdown-toggles {
+  text-decoration: none;
+}
+
+.text-start {
+  text-decoration: none;
+}
+
+.nav-link:hover h6 {
+  color: #0056d2 !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .home-container {
+    padding-left: 5%;
+    /* Adjust padding-left for mobile */
+    padding-right: 5%;
+    /* Adjust padding-right for mobile */
+    text-align: center;
+    /* Center text on mobile */
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .text {
+    padding-right: 0;
+    /* Remove right padding on mobile */
+    text-align: center;
+    /* Center text on mobile */
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image {
+    display: none;
+    /* Hide image on mobile */
+  }
+}
+
+
+
+
+/* Home */
+.home-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* Adjust height as needed */
+  padding-left: 10%;
+  /* Adjust padding-left as needed */
+  padding-right: 10%;
+  /* Adjust padding-right as needed */
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  width: 80%;
+  /* Adjust width as needed */
+}
+
+.text {
+  text-align: left;
+  flex: 1;
+  padding-right: 20px;
+  /* Adjust spacing between text and image */
+}
+
+.image {
+  text-align: right;
+}
+
+.image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.heading-container {
+  padding-left: 15%;
+  /* Adjust padding-left as needed */
+  padding-right: 15%;
+  padding-bottom: 1%;
+  /* Adjust padding-right as needed */
+}
+
+
+.card-container {
+  padding-left: 15%;
+  /* Adjust padding-left as needed */
+  padding-right: 15%;
+  /* Adjust padding-right as needed */
+}
+
+/* Media query for mobile view */
+@media screen and (max-width: 768px) {
+  .text {
+    text-align: center;
+    /* Center align text in mobile view */
+    padding: 0;
+    /* Remove padding in mobile view */
+  }
+
+  .image {
+    text-align: center;
+    /* Center align image in mobile view */
+    margin-top: 20px;
+    /* Adjust margin for spacing */
+  }
+}
+
+
+.card-logo-top {
+  max-width: 35px;
+  height: auto;
+  padding: 5px;
+}
+
+.img-with-border {
+  border: 1px solid #dfdede;
+  border-radius: 8px !important;
+}
+
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background-color: #0056d2;
+  /* Adjust color as needed */
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056d2;
+  /* Adjust color as needed */
+}
+
+.btn i {
+  font-size: 25px;
+}
+
+
+
+
+
+
+/*Footer*/
+.custom-nav-links a {
+  color: black !important;
+  font-size: 12px;
+}
+
+
+
+
+
+
+/*CoursePage*/
+
+.course-page {
+  padding-top: 50px;
+  /* Set height to 100% of viewport height */
+}
+
+
+.img-coursebanner {
+  background-image: url('https://static.wixstatic.com/media/618c8c_df79aa55210044169190c2b93e9b2766~mv2.png');
+  background-size: 100% 100%;
+  /* you don't need the comma here */
+  height: 550px;
+  background-size: cover;
+  /* Adjust the height value as needed */
+}
+
+.card-course {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 15px !important;
+}
+
+.card-course-body {
+  padding: 25px;
+}
+
+.card-additional {
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 20px !important;
+  background-color: #ebf3ff;
+  /* Example background color */
+}
+
+.card-additional-body {
+  padding: 20px;
+}
+
+/* General card styles */
+.card-compelling {
+  background-color: #ffffff;
+  /* Set background color */
+  border-radius: 10px;
+  /* Add rounded corners */
+  border: 1px solid #ddd;
+  padding: 20px;
+  /* Add padding inside the card */
+  margin-bottom: 20px;
+  /* Add spacing between cards */
+  /* Add a solid border with color #ddd */
+}
+
+.login-container {
+  max-width: 1500px;
+  /* Adjust the width as needed */
+  margin: 30 auto;
+  /* This centers the container horizontally */
+}
+
+
+
+
+/*Course*/
+
+/* General card styles */
+.card-countdown {
+  background-color: #ffffff;
+  /* Set background color */
+  border-radius: 10px;
+  /* Add rounded corners */
+  border: 1px solid #ddd;
+  padding: 20px;
+  /* Add padding inside the card */
+  margin-bottom: 20px;
+  /* Add spacing between cards */
+  /* Add a solid border with color #ddd */
+}
+
+
+
+/*Profile*/
+
+/* General card styles */
+.card-profile {
+  background-color: #ffffff;
+  /* Set background color */
+  border-radius: 10px;
+  /* Add rounded corners */
+  border: 1px solid #ddd;
+  padding: 20px;
+  /* Add padding inside the card */
+  margin-bottom: 20px;
+  /* Add spacing between cards */
+  /* Add a solid border with color #ddd */
+}
+
+.card-profile-body {
+  padding: 25px;
+}
